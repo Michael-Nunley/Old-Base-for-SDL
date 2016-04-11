@@ -1,3 +1,9 @@
+/*/
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Purpose: Error check, and load things to memory *
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+/*/
+
 bool init()
 {
 	//Initialization flag
@@ -54,14 +60,23 @@ bool init()
 					printf("SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError());
 					success = false;
 				}
-				if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
-				{
-					printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
-					success = false;
-				}
 			}
 		}
+
 	}
+	if (SDL_Init(SDL_INIT_AUDIO) < 0)
+    {
+        printf("Failed to init SDL: %s\n", SDL_GetError());
+        success = false;
+    }
+    else
+    {
+        if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+        {
+            printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+            success = false;
+        }
+    }
 
 	return success;
 }

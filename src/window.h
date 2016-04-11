@@ -1,3 +1,27 @@
+/*/
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                  Window Class                   *
+ *                                                 *
+ *    Purpose: Handle all things render window     *
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * @Param: LWindow(); Sets variables to 0 & false  *
+ * @Param: bool init();  initializes window        *
+ * @Param: SDL_Renderer* createRenderer(); used to *
+ *                                         render  *
+ * @Param: void handleEvent(SDL_Event& e); Event   *
+ *                                         handler *
+ * @Param: void free(); Call to unload from memory *
+ * @Param: int getWidth(); Returns window width    *
+ * @Param: int getHeight(); Returns window height  *
+ * @Param: bool hasMouseFocus(); Returns true if   *
+ *                   mouse can input to the window *
+ * @Param: bool hasKeyboardFocus(); Returns true   *
+ *             if keyboard can input to the window *
+ * @Param: bool isMinimized(); Returns true if the *
+ *                             window is minimized *
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+/*/
+
 class LWindow
 {
 	public:

@@ -1,3 +1,11 @@
+/*/
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                 Texture Class                   *
+ *                                                 *
+ *    Purpose: Handle texture rendering            *
+ * * * * * * * * * * * * * * * * * * * * * * * * * *
+/*/
+
 class LTexture
 {
 	public:
@@ -58,7 +66,6 @@ bool LTexture::loadFromFile(std::string path)
 bool LTexture::loadFromRenderedText(std::string textureText, SDL_Color textColor)
 {
 	free();
-
 	SDL_Surface* textSurface = TTF_RenderText_Solid(gFont, textureText.c_str(), textColor);
 	if(textSurface != NULL)
 	{

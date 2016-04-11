@@ -48,6 +48,8 @@
 		<Unit filename="src/Grasslands_A.h" />
 		<Unit filename="src/button.h" />
 		<Unit filename="src/close.h" />
+		<Unit filename="src/frame.h" />
+		<Unit filename="src/globals.h" />
 		<Unit filename="src/init.h" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/main.h" />

@@ -1,7 +1,14 @@
+/*/
+ * * * * * * * * * * * * * * * * * * * *
+ * Purpose: Unload things from memory  *
+ * * * * * * * * * * * * * * * * * * * *
+/*/
+
 void close()
 {
     gButtonSpriteSheetTexture.free();
-    gBackgroundSpriteSheetTexture.free();
+    gFPSTexture.free();
+    //gBackgroundSpriteSheetTexture.free();
 
 	gPicTexture.free();
 
