@@ -16,7 +16,10 @@ const int TOTAL_BUTTONS = 2;
 const int TOTAL_BACKGROUND_TILES = 1;
 LButton gButtons[TOTAL_BUTTONS];
 
-const int total_stuff = 8110;
+const int total_stuff = 10000;
+int stuffInUse = 0;
+
+int totalNumberOfDots = 1;
 
 int x,y;
 double  targetTimeStep =     16.6666666667,
@@ -24,6 +27,8 @@ double  targetTimeStep =     16.6666666667,
 int64_t timeBehind1 =         0.0;
 
 double  lastTime2 =           0.0;
+
+double currentFPS = 0;
 int64_t timeBehind2 =         0.0;
 
 LTexture gPicTexture,
@@ -98,28 +103,50 @@ bool loadMedia()
 
 void updateOpen()
 {
-    //Clear screen
-    //SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-    //SDL_RenderClear(gRenderer);
+    currentFPS = (1000/lastTime1);
 
-    for(int i = 0; i < total_stuff; i++)
+
+
+
+    if (currentFPS >= 29)
+    {
+        totalNumberOfDots++;
+    }
+    else
+    {
+        std::cout << currentFPS << "|" << totalNumberOfDots << std::endl;
+        totalNumberOfDots--;
+    }
+
+    //Clear screen
+    for(int i = 0; i < stuffInUse; i++)
     {
         gLagTexture[i].render(
             rand() %gWindow.getWidth(),
             rand() %gWindow.getHeight());
     }
 
-    gPicTexture.render(x,y); //put the random picture where your mouse is
+    //gPicTexture.render(x,y); //put the random picture where your mouse is
 
     /* Only render the buttons if the escape menu is open */
     if(escapeOpen) {for(int i = 0; i < TOTAL_BUTTONS; ++i) {gButtons[i].render();}}
 
-    SDL_Color textColor = {0, 0, 0};
-    gFPSTexture.loadFromRenderedText(doubleToString(1000/lastTime1) , textColor);
-    gFPSTexture.render(0,0);
+    //SDL_Color textColor = {0, 0, 0};
+    //gFPSTexture.loadFromRenderedText(doubleToString(currentFPS) , textColor);
+    //gFPSTexture.render(0,0);
 
+
+    SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_RenderClear(gRenderer);
+
+    SDL_SetRenderDrawColor(gRenderer, 255, 0, 0, 255);
+    for(int i = 0; i < totalNumberOfDots; i++)
+    {
+        int swag1 = rand() %gWindow.getWidth(),swag2 = rand() %gWindow.getHeight();
+        SDL_RenderDrawPoint(gRenderer, swag1, swag2);
+
+    }
     SDL_RenderPresent(gRenderer); //Update screen
-
 }
 
 void updateClose()
@@ -143,11 +170,11 @@ int main(int argc, char* args[])
             gButtons[1].setPosition (SCREEN_WIDTH - BUTTON_WIDTH, 0);
             gButtons[1].isExitButton =                         false;
 
-            Mix_PlayMusic(gMusic, -1);
+            //Mix_PlayMusic(gMusic, -1);
 
 			while(!quit)
 			{
-			    std::cout << lastTime1 <<  "|" << lastTime2 << std::endl;
+			    //std::cout << lastTime1 <<  "|" << lastTime2 << std::endl;
 			    ms = std::chrono::duration_cast<std::chrono::milliseconds>
                     (std::chrono::system_clock::now().time_since_epoch());
 

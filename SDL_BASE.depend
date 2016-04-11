@@ -378,3 +378,45 @@
 
 1460343529 c:\dev\sdl_base\src\close.h
 
+1460344385 source:c:\dev\old-base-for-sdl\src\main.cpp
+	"main.h"
+	"globals.h"
+	"window.h"
+	"texture.h"
+	"timer.h"
+	"button.h"
+	"frame.h"
+	"init.h"
+	"close.h"
+
+1460344008 c:\dev\old-base-for-sdl\src\main.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	<string>
+	<sstream>
+	<cmath>
+	<random>
+	<iostream>
+	<vector>
+	<time.h>
+	<chrono>
+
+1460344008 c:\dev\old-base-for-sdl\src\globals.h
+
+1460344008 c:\dev\old-base-for-sdl\src\window.h
+
+1460344008 c:\dev\old-base-for-sdl\src\texture.h
+
+1460343650 c:\dev\old-base-for-sdl\src\timer.h
+
+1460343529 c:\dev\old-base-for-sdl\src\button.h
+
+1460344008 c:\dev\old-base-for-sdl\src\frame.h
+
+1460344008 c:\dev\old-base-for-sdl\src\init.h
+
+1460344008 c:\dev\old-base-for-sdl\src\close.h
+
