@@ -378,7 +378,7 @@
 
 1460343529 c:\dev\sdl_base\src\close.h
 
-1460344385 source:c:\dev\old-base-for-sdl\src\main.cpp
+1460347155 source:c:\dev\old-base-for-sdl\src\main.cpp
 	"main.h"
 	"globals.h"
 	"window.h"
@@ -408,7 +408,7 @@
 
 1460344008 c:\dev\old-base-for-sdl\src\window.h
 
-1460344008 c:\dev\old-base-for-sdl\src\texture.h
+1460433190 c:\dev\old-base-for-sdl\src\texture.h
 
 1460343650 c:\dev\old-base-for-sdl\src\timer.h
 

@@ -17,9 +17,7 @@ const int TOTAL_BACKGROUND_TILES = 1;
 LButton gButtons[TOTAL_BUTTONS];
 
 const int total_stuff = 10000;
-int stuffInUse = 0;
-
-int totalNumberOfDots = 1;
+int stuffInUse = 8115;
 
 int x,y;
 double  targetTimeStep =     16.6666666667,
@@ -55,11 +53,18 @@ bool loadMedia()
 	}
 	if(!gPicTexture.loadFromFile("sprites/tile13.gif"))
         {printf("Failed to load test texture!\n"); success = false;}
+    /*
     for(int i = 0; i < total_stuff; i++)
     {
-        if(!gLagTexture[i].loadFromFile("sprites/SinglePixel.png"))
+        if(!gLagTexture[i].loadFromFile("sprites/SinglePixel.jpg"))
         {printf("Failed to load lag texture!\n"); success = false;}
     }
+    */
+    for(int i = 0; i < total_stuff; i++)
+    {
+        gLagTexture[i].setColor(255,0,0);
+    }
+
 	if(!gButtonSpriteSheetTexture.loadFromFile("sprites/button.png"))
         {printf("Failed to load button sprite texture!\n"); success = false;}
 	else
@@ -107,15 +112,18 @@ void updateOpen()
 
 
 
+    SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_RenderClear(gRenderer);
+
 
     if (currentFPS >= 29)
     {
-        totalNumberOfDots++;
+        stuffInUse++;
     }
     else
     {
-        std::cout << currentFPS << "|" << totalNumberOfDots << std::endl;
-        totalNumberOfDots--;
+        std::cout << currentFPS << "|" << stuffInUse << std::endl;
+        stuffInUse--;
     }
 
     //Clear screen
@@ -136,16 +144,6 @@ void updateOpen()
     //gFPSTexture.render(0,0);
 
 
-    SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-    SDL_RenderClear(gRenderer);
-
-    SDL_SetRenderDrawColor(gRenderer, 255, 0, 0, 255);
-    for(int i = 0; i < totalNumberOfDots; i++)
-    {
-        int swag1 = rand() %gWindow.getWidth(),swag2 = rand() %gWindow.getHeight();
-        SDL_RenderDrawPoint(gRenderer, swag1, swag2);
-
-    }
     SDL_RenderPresent(gRenderer); //Update screen
 }
 
