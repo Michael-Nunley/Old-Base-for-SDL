@@ -20,14 +20,13 @@ const int total_stuff = 10000;
 int stuffInUse = 8115;
 
 int x,y;
-double  targetTimeStep =     16.6666666667,
-        lastTime1 =           0.0;
-int64_t timeBehind1 =         0.0;
-
-double  lastTime2 =           0.0;
-
-double currentFPS = 0;
-int64_t timeBehind2 =         0.0;
+double  targetTimeStep1 =   16.6666666667,
+        targetTimeStep2 =   16.6666666667,
+        lastTime1 =         0.0,
+        lastTime2 =         0.0,
+        currentFPS =        0.0;
+int64_t timeBehind1 =       0.0,
+        timeBehind2 =       0.0;
 
 LTexture gPicTexture,
          gFPSTexture,
@@ -177,7 +176,7 @@ int main(int argc, char* args[])
                     (std::chrono::system_clock::now().time_since_epoch());
 
                 lastTime1 = -timeBehind1 + ms.count();
-                if(lastTime1 >= targetTimeStep)
+                if(lastTime1 >= targetTimeStep1)
                 {
                     timeBehind1 = ms.count();
                     //lastTime -= targetTimeStep;
@@ -187,7 +186,7 @@ int main(int argc, char* args[])
                     else{updateClose();}
 				}
 				lastTime2 = -timeBehind2 + ms.count();
-				if(lastTime2 >= 10)
+				if(lastTime2 >= targetTimeStep2)
                 {
                     timeBehind2 = ms.count();
                     if(SDL_PollEvent(&e) != 0)
@@ -198,8 +197,8 @@ int main(int argc, char* args[])
                                 //toggle the escape menu's visibility
                                 {
                                     case SDLK_ESCAPE: escapeOpen = !escapeOpen; break;
-                                    case SDLK_UP: targetTimeStep = 33.333333333; break;
-                                    case SDLK_DOWN: targetTimeStep = 16.666666667; break;
+                                    case SDLK_UP: targetTimeStep2 = 33.333333333; break;
+                                    case SDLK_DOWN: targetTimeStep2 = 16.666666667; break;
                                 }}
                         else if(e.type == SDL_MOUSEBUTTONDOWN && escapeOpen == false)
                             {switch(e.button.button)
